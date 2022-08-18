@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>To Do List</title>
 </head>
 <body>
-    <h1>Hello webpack!</h1>
+    <ul>
+        <li>Today's To Do
+            <i class="fa-solid fa-arrows-rotate"></i>
+        </li>
+        <li>
+            <div class="add-items">
+                <label for="add-item"></label>
+                <input type="text" name="add-item" id="add-item"  placeholder="Add to your list...">
+            </div>
+            <i class="fa-solid fa-arrow-left"></i>
+        </li>
+        <li>
+            <div class="choices">
+                <input type="checkbox" name="item-1" id="item-1">
+                <label for="item-1">wash the dashes</label>
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </li>
+        <li><a href="#">Clear all completed</a></li>
+    </ul>
+    <script src="https://kit.fontawesome.com/f30ad4dcc9.js" crossorigin="anonymous"></script>
 </body>
 </html>
