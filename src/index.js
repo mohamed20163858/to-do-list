@@ -15,6 +15,8 @@ let toDoListArray = [];
 let i = 0;
 const loadPageElements = () => {
   const ul = document.querySelector('ul');
+  const liLast = document.querySelector('ul li:last-of-type');
+  liLast.remove();
   for (let i = 0; i < toDoListArray.length; i += 1) {
     const li = document.createElement('li');
     li.innerHTML = `
