@@ -47,6 +47,7 @@ const moveIntoListItemAction = (listItem) => {
     icon.classList.add('fa-trash');
     listItem.parentElement.parentElement.style.backgroundColor = '#FFFECA';
     listItem.style.backgroundColor = '#FFFECA';
+    listItem.style.caretColor = 'black';
   });
 };
 const moveOutListItemAction = (listItem) => {
@@ -68,6 +69,20 @@ const deleteIconClickAction = (listItem, i) => {
     }
   });
 };
+const editTask = (listItem, i) => {
+  listItem.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      toDoListArray[i].description = listItem.value;
+      const icon = listItem.parentElement.parentElement.querySelector('div+i');
+      icon.classList.remove('fa-trash');
+      icon.classList.add('fa-ellipsis-vertical');
+      listItem.parentElement.parentElement.style.backgroundColor = 'white';
+      listItem.style.backgroundColor = 'white';
+      listItem.style.caretColor = 'transparent';
+      window.localStorage.tasks = JSON.stringify(toDoListArray);
+    }
+  });
+};
 if (window.localStorage.tasks) {
   toDoListArray = JSON.parse(window.localStorage.tasks);
   loadPageElements();
@@ -82,6 +97,7 @@ listInput.addEventListener('keyup', (event) => {
     moveIntoListItemAction(listItem);
     moveOutListItemAction(listItem);
     deleteIconClickAction(listItem, toDoListArray.length - 1);
+    editTask(listItem, toDoListArray.length - 1);
   }
 });
 const listItems = document.querySelectorAll('.list-item');
@@ -90,4 +106,5 @@ for (let i = 0; i < listItems.length; i += 1) {
   moveIntoListItemAction(listItems[i]);
   moveOutListItemAction(listItems[i]);
   deleteIconClickAction(listItems[i], i);
+  editTask(listItems[i], i);
 }

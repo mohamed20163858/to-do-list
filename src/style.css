@@ -65,8 +65,13 @@ input[type="text"] {
   border: none;
 }
 
+input[type="text"]:hover {
+  cursor: context-menu;
+}
+
 input[type="text"]:focus {
   outline: none;
+  cursor: text;
 }
 
 .inner {
