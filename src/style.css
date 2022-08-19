@@ -16,7 +16,7 @@ body {
   background-color: var(--main-color, gray);
 }
 
-ul {
+.outter {
   list-style: none;
   padding: 0;
   background-color: white;
@@ -25,6 +25,7 @@ ul {
   border: 1px var(--main-color, gray) solid;
   border-radius: 3px;
   box-shadow: 3px 3px #dddddde4;
+  overflow: auto;
 }
 
 ul li {
@@ -38,7 +39,7 @@ li i {
   color: var(--element-color, gray);
 }
 
-ul li:last-of-type {
+.outter > li:last-of-type {
   background-color: var(--main-color, gray);
   display: flex;
   justify-content: center;
@@ -54,12 +55,26 @@ li a:hover {
   text-decoration: underline;
 }
 
-#add-item {
+input[type="text"] {
   width: 40vw;
   min-width: 200px;
   border: none;
 }
 
-#add-item:focus {
+input[type="text"]:focus {
   outline: none;
+}
+
+.inner {
+  width: 100%;
+  padding: 0;
+}
+
+.choices {
+  display: flex;
+  align-items: center;
+}
+
+.choices i {
+  margin-right: 10px;
 }
