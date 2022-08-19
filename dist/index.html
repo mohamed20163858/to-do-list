@@ -7,7 +7,7 @@
     <title>To Do List</title>
 <script defer src="main.js"></script></head>
 <body>
-    <ul>
+    <ul class="outter">
         <li>Today's To Do
             <i class="fa-solid fa-arrows-rotate"></i>
         </li>
@@ -19,19 +19,9 @@
             <i class="fa-solid fa-arrow-left"></i>
         </li>
         <li>
-            <div class="choices">
-                <input type="checkbox" name="item-1" id="item-1">
-                <label for="item-1">wash the dishes</label>
-            </div>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <ul class="inner"></ul>
         </li>
-        <li>
-            <div class="choices">
-                <input type="checkbox" name="item-2" id="item-2">
-                <label for="item-2">complete to do list project</label>
-            </div>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-        </li>
+        
         <li><a href="#">Clear all completed</a></li>
     </ul>
     <script src="https://kit.fontawesome.com/f30ad4dcc9.js" crossorigin="anonymous"></script>
