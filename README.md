@@ -1,17 +1,11 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Awesome Books: second version 
-> building the functionality of adding new books to the list shown in the landing page beside the ability of removing them use remove button all this done using concepts of array , objects, classes and local storage.
+# To Do List: first version 
+> building the to do list web application to enter the daily tasks given the ability to add, check, and remove list items all this done using concepts of array , objects and local storage.
 
 ## Built With
 
-- html , javaScript
-
-
-## Live Demo 
-
-[Live Demo Link](https://mohamed20163858.github.io/awesome-books/)
-
+- html, css, javaScript
 
 ## Getting Started
 You can download the page by clicking in the code green button and select Download ZIP or if you are a developer 
