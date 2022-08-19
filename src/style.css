@@ -28,11 +28,15 @@ body {
   overflow: auto;
 }
 
-ul li {
+.outter li {
   padding: 20px;
   border-bottom: 3px var(--main-color, gray) solid;
   display: flex;
   justify-content: space-between;
+}
+
+.outter > li:nth-of-type(3) {
+  padding: 0;
 }
 
 li i {
