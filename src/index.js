@@ -1,18 +1,28 @@
 import './style.css';
+import { toggleCheckBox, clearAllCompleted } from './methods.js';
 
 let toDoListArray = [];
+const checkBoxesIcons = { false: 'fa-regular fa-square', true: 'fa-solid fa-check' };
 const showElement = (i) => {
   const ul = document.querySelector('.inner');
   const li = document.createElement('li');
   li.classList.add('added-item');
   li.innerHTML = `
   <div class="choices">
-      <i class="fa-regular fa-square"></i>
+      <i class="${checkBoxesIcons[toDoListArray[i].completed]}"></i>
       <input type="text" name="item-${i + 1}-text" id="item-${i + 1}-text" class="list-item" value="${toDoListArray[i].description}">
       <label for="item-${i + 1}-text"></label>
   </div>
   <i class="fa-solid fa-ellipsis-vertical"></i>
   `;
+  const listItem = li.querySelector('.choices input');
+  if (toDoListArray[i].completed) {
+    listItem.style.textDecoration = 'line-through';
+    listItem.style.color = '#868686';
+  } else {
+    listItem.style.textDecoration = 'none';
+    listItem.style.color = 'black';
+  }
   ul.appendChild(li);
 };
 
@@ -21,6 +31,7 @@ const loadPageElements = () => {
     showElement(i);
   }
 };
+
 const addTask = () => {
   const listInput = document.querySelector('#add-item');
   const object = {};
@@ -47,6 +58,7 @@ const moveIntoListItemAction = (listItem) => {
     icon.classList.add('fa-trash');
     listItem.parentElement.parentElement.style.backgroundColor = '#FFFECA';
     listItem.style.backgroundColor = '#FFFECA';
+    listItem.style.caretColor = 'black';
   });
 };
 const moveOutListItemAction = (listItem) => {
@@ -68,6 +80,20 @@ const deleteIconClickAction = (listItem, i) => {
     }
   });
 };
+const editTask = (listItem, i) => {
+  listItem.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      toDoListArray[i].description = listItem.value;
+      const icon = listItem.parentElement.parentElement.querySelector('div+i');
+      icon.classList.remove('fa-trash');
+      icon.classList.add('fa-ellipsis-vertical');
+      listItem.parentElement.parentElement.style.backgroundColor = 'white';
+      listItem.style.backgroundColor = 'white';
+      listItem.style.caretColor = 'transparent';
+      window.localStorage.tasks = JSON.stringify(toDoListArray);
+    }
+  });
+};
 if (window.localStorage.tasks) {
   toDoListArray = JSON.parse(window.localStorage.tasks);
   loadPageElements();
@@ -79,15 +105,22 @@ listInput.addEventListener('keyup', (event) => {
     addTask();
     showElement(toDoListArray.length - 1);
     const listItem = document.querySelector('.added-item:last-of-type .list-item');
+    const listCheckBox = document.querySelector('.added-item:last-of-type .choices i');
     moveIntoListItemAction(listItem);
     moveOutListItemAction(listItem);
     deleteIconClickAction(listItem, toDoListArray.length - 1);
+    editTask(listItem, toDoListArray.length - 1);
+    toggleCheckBox(listCheckBox, toDoListArray, toDoListArray.length - 1);
+    clearAllCompleted(toDoListArray);
   }
 });
 const listItems = document.querySelectorAll('.list-item');
-// const listCheckBoxes = document.querySelectorAll('.choices i');
+const listCheckBoxes = document.querySelectorAll('.choices i');
 for (let i = 0; i < listItems.length; i += 1) {
   moveIntoListItemAction(listItems[i]);
   moveOutListItemAction(listItems[i]);
   deleteIconClickAction(listItems[i], i);
+  editTask(listItems[i], i);
+  toggleCheckBox(listCheckBoxes[i], toDoListArray, i);
+  clearAllCompleted(toDoListArray);
 }

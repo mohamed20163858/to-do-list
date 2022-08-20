@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # To Do List: first version 
-> building the to do list web application to enter the daily tasks given the ability to add, check, and remove list items all this done using concepts of array , objects and local storage.
+> building the to do list web application to enter the daily tasks given the ability to add, edit, check, and remove list items all this done using concepts of array , objects, modules and local storage.
 
 ## Built With
 
