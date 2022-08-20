@@ -87,3 +87,22 @@ input[type="text"]:focus {
 .choices i {
   margin-right: 10px;
 }
+
+.outter li button {
+  border: none;
+  background-color: var(--main-color, gray);
+  color: var(--element-color, black);
+}
+
+.outter li button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.fa-check {
+  color: #2e8ae6;
+}
+
+.fa-square {
+  color: #868686;
+}
